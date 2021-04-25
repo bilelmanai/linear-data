@@ -1,0 +1,108 @@
+ALGORITHM array_diff_number
+VAR
+    str1,str2: ARRAY_OF INTEGER[50];
+    summ:INTEGER:=0;
+    i,j:INTEGER;
+BEGIN
+    FOR i FROM 0 TO str1.length-1   DO
+        FOR j FROM 0 TO str2.length-1   DO
+            IF (str1[i]=str2[j]) THEN
+                break;
+            END_IF
+             IF (j=str2.length-1) THEN
+                summ:=summ+str1[i];
+            END_IF
+        END_FOR
+    END_FOR
+    FOR j FROM 0 TO str2.length-1   DO
+        FOR i FROM 0 TO str1.length-1   DO
+            IF (str2[j]=str1[i]) THEN
+                break;
+            END_IF
+            ELSE IF (i=str1.length-1) THEN
+                summ:=summ+str2[j];
+            END_IF
+        END_FOR
+    END_FOR
+  write('summ=',summ)
+END
+
+
+//----------------------------------------------------------------------------------
+ALGORITHM htable_diff_number
+VAR
+    htable:HASH_TABLE<INTEGER,INTEGER>
+    str1,str2:INTEGER;
+    i,k,j: INTEGER;
+    t:integer:=0;
+BEGIN
+    FOR i FROM 0 TO str1.length -1  DO
+        FOR j FROM 0 TO str2.length-1   DO
+            IF (str1[i]=str2[j]) THEN
+                break;
+            END_IF
+            ELSE IF (j=str2.length-1) THEN
+                htable.insert(t
+                ,str1[i])
+                t:=t+1;
+            END_IF
+        END_FOR
+    END_FOR
+    FOR j FROM 0 TO str2.length -1  DO
+        FOR i FROM 0 TO str1.length-1   DO
+            IF (str2[j]=str1[i]) THEN
+                break;
+            END_IF
+            ELSE IF (i=str1.length-1) THEN
+                htable.insert(t
+                ,str2[j])
+                t:=t+1;
+            END_IF
+        END_FOR
+    END_FOR
+    FOR k FROM 0 TO t STEP step  DO
+        summ:=sum+htab.get(k)
+    END_FOR
+    write('summ=',summ)
+END
+
+//--------------------------------------------------
+ALGORITHM array_same_number
+VAR
+    str1,str2,: ARRAY_OF INTEGER[50];
+    summ:INTEGER:=0;
+    i,j:INTEGER;
+BEGIN
+    FOR i FROM 0 TO str1.length-1   DO
+        FOR j FROM 0 TO str2.length-1   DO
+            IF (str1[i]=str2[j]) THEN
+               summ:=summ+str1[i]; 
+            END_IF
+        END_FOR
+    END_FOR
+    write('summ=',summ);
+END
+
+
+//--------------------------------------------------
+ALGORITHM htable_same_number
+    VAR
+    htable:HASH_TABLE<INTEGER,INTEGER>
+    str1,str2:INTEGER;
+    i,k,j: INTEGER;
+    t:integer:=0;
+BEGIN
+    FOR j FROM 0 TO str2.length -1  DO
+        FOR i FROM 0 TO str1.length-1   DO
+                IF (str2[j]=str1[i]) THEN
+                htable.insert(t
+                ,str2[j])
+                t:=t+1;
+                END_IF
+        END_FOR
+    END_FOR
+    FOR k FROM 0 TO t STEP step  DO
+        summ:=sum+htab.get(k)
+    END_FOR
+    write('summ=',summ)
+END
